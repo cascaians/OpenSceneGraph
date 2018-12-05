@@ -14,5 +14,5 @@ SET ( EXAMPLE_NAME osgqfont )
 SETUP_EXAMPLE(${EXAMPLE_NAME})
 
 IF ( Qt5Widgets_FOUND )
-    qt5_use_modules( example_${EXAMPLE_NAME} Widgets OpenGL )
+    target_link_libraries( example_${EXAMPLE_NAME} Qt5::Widgets Qt5::OpenGL )
 ENDIF( Qt5Widgets_FOUND )
