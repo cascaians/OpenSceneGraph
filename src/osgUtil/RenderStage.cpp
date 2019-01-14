@@ -1076,6 +1076,13 @@ void RenderStage::drawInner(osg::RenderInfo& renderInfo,RenderLeaf*& previous, b
             GLenum pixelFormat = itr->second._image->getPixelFormat();
             if (pixelFormat==0) pixelFormat = _imageReadPixelFormat;
             if (pixelFormat==0) pixelFormat = GL_RGB;
+            if(
+                pixelFormat==GL_RGBA32UI || pixelFormat==GL_RGBA16UI || pixelFormat==GL_RGBA8UI ||
+                pixelFormat==GL_RGBA32I  || pixelFormat==GL_RGBA16I  || pixelFormat==GL_RGBA8I
+              )
+            {
+                pixelFormat=GL_RGBA_INTEGER;
+            }
 
             GLenum dataType = itr->second._image->getDataType();
             if (dataType==0) dataType = _imageReadPixelDataType;
